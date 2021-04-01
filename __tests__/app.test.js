@@ -54,4 +54,17 @@ describe('profile routes', () => {
     })
   })
 
+  it('edits one profile with new favorite', async () => {
+    const res = await request(app)
+    .put('/api/v1/profiles/1')
+    .send({ hairColor: 'white' });
+
+    expect(res.body).toEqual({
+      id: '1',
+      userName: 'test user',
+      favoriteCharacter: '030555b3-4c92-4fce-93fb-e70c3ae3df8b',
+      hairColor: 'white',
+    })
+  })
+
 });
