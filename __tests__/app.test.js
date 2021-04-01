@@ -54,7 +54,7 @@ describe('profile routes', () => {
     })
   })
 
-  it('edits one profile with new favorite', async () => {
+  it('edits one profile with new hair color', async () => {
     const res = await request(app)
     .put('/api/v1/profiles/1')
     .send({ hairColor: 'white' });
@@ -66,5 +66,20 @@ describe('profile routes', () => {
       hairColor: 'white',
     })
   })
+
+  it('deletes one profile', async () => {
+    const res =  await request(app).delete('/api/v1/profiles/1');
+    
+    expect(res.body).toEqual(
+      {
+        id: expect.any(String),
+        userName: expect.any(String),
+        favoriteCharacter: expect.any(String),
+        hairColor: expect.any(String),
+      }
+    )
+  })
+
+
 
 });
